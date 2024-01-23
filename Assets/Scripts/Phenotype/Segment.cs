@@ -165,7 +165,7 @@ public class Segment : MonoBehaviour
 
     public void AttachHingeJoint(Vector3 axis, Rigidbody parentRigidbody, GameObject cylinderPrefab, Vector3 jointPosition, Vector3 dimVector, Transform parent)
     {
-        if (hingeJoint != null) Destroy(hingeJoint);
+        if (hingeJoint != null) return;
         
         GameObject jointObject = Instantiate(cylinderPrefab, Vector3.zero, Quaternion.identity);
         jointObject.transform.parent = parent;
