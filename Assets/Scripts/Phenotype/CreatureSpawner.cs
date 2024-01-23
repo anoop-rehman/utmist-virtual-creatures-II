@@ -300,25 +300,25 @@ public class CreatureSpawner : MonoBehaviour
 
                 case (JointType.HingeX):
                     {
-                        spawnedSegment.AttachHingeJoint(new Vector3(1, 0, 0), sgd.parentSegmentRigidbody, hingePrefab, jointPosition, dimVector);
+                        spawnedSegment.AttachHingeJoint(new Vector3(1, 0, 0), sgd.parentSegmentRigidbody, hingePrefab, jointPosition, dimVector, sgd.c.transform);
                     }
                     break;
 
                 case (JointType.HingeY):
                     {
-                        spawnedSegment.AttachHingeJoint(new Vector3(0, 1 * sgd.otherReflectInt, 0), sgd.parentSegmentRigidbody, hingePrefab, jointPosition, dimVector);
+                        spawnedSegment.AttachHingeJoint(new Vector3(0, 1 * sgd.otherReflectInt, 0), sgd.parentSegmentRigidbody, hingePrefab, jointPosition, dimVector, sgd.c.transform);
                     }
                     break;
 
                 case (JointType.HingeZ):
                     {
-                        spawnedSegment.AttachHingeJoint(new Vector3(0, 0, 1 * sgd.otherReflectInt), sgd.parentSegmentRigidbody, hingePrefab, jointPosition, dimVector);
+                        spawnedSegment.AttachHingeJoint(new Vector3(0, 0, 1 * sgd.otherReflectInt), sgd.parentSegmentRigidbody, hingePrefab, jointPosition, dimVector, sgd.c.transform);
                     }
                     break;
 
                 case (JointType.Spherical):
                     {
-                        spawnedSegment.AttachSphericalJoint(sgd.parentSegmentRigidbody, spherePrefab);
+                        spawnedSegment.AttachSphericalJoint(sgd.parentSegmentRigidbody, spherePrefab, sgd.c.transform);
                     }
                     break;
 

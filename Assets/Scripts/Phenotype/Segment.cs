@@ -163,11 +163,13 @@ public class Segment : MonoBehaviour
         fixedJoint.connectedBody = parentRigidbody;
     }
 
-    public void AttachHingeJoint(Vector3 axis, Rigidbody parentRigidbody, GameObject cylinderPrefab, Vector3 jointPosition, Vector3 dimVector)
+    public void AttachHingeJoint(Vector3 axis, Rigidbody parentRigidbody, GameObject cylinderPrefab, Vector3 jointPosition, Vector3 dimVector, Transform parent)
     {
         if (hingeJoint != null) Destroy(hingeJoint);
-
+        
         GameObject jointObject = Instantiate(cylinderPrefab, Vector3.zero, Quaternion.identity);
+        jointObject.transform.parent = parent;
+        jointObject.transform.localPosition = Vector3.zero;
         FixedJoint jointObjectj = jointObject.AddComponent<FixedJoint>();
         jointObjectj.connectedBody = parentRigidbody;
         jointObjectj.autoConfigureConnectedAnchor = false;
@@ -193,13 +195,14 @@ public class Segment : MonoBehaviour
         limits.max = 60f;
         hingeJoint.limits = limits;
         hingeJoint.useLimits = true;
+        
     }
 
-    public void AttachSphericalJoint(Rigidbody parentRigidbody, GameObject spherePrefab)
+    public void AttachSphericalJoint(Rigidbody parentRigidbody, GameObject spherePrefab, Transform parent)
     {
-
+        
         GameObject spawnedJointGameObject = Instantiate(spherePrefab, Vector3.zero, Quaternion.identity);
-
+        spawnedJointGameObject.transform.parent = parent;
         sphericalJoint = spawnedJointGameObject.AddComponent<CharacterJoint>();
         sphericalJoint.connectedBody = parentRigidbody;
         /*
